@@ -1,7 +1,7 @@
 release:
 	@echo "Building release version..."
 	@rm -rf docs/
-	@flutter build web --no-source-maps --web-renderer html --output docs/
+	@flutter build web --no-source-maps
 	@echo "Done."
 
 release-canvas:
