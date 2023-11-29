@@ -76,11 +76,15 @@ class _SorteioPageState extends State<SorteioPage> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             FloatingActionButton(
-              tooltip: 'Carregar lista de participantes',
-              heroTag: 'carregar',
-              onPressed: _getUsers,
-              child: const Icon(Icons.add),
-            ),
+                tooltip: 'Carregar lista de participantes',
+                heroTag: 'carregar',
+                onPressed: _getUsers,
+                child: Text(
+                  '⬆️',
+                  style: GoogleFonts.roboto().copyWith(
+                    fontSize: 20,
+                  ),
+                )),
             const SizedBox(height: 20),
             FloatingActionButton(
               tooltip: 'Sortear',
@@ -131,7 +135,12 @@ class _SorteioPageState extends State<SorteioPage> {
                           ],
                         ));
               },
-              child: const Icon(Icons.sync),
+              child: Text(
+                '🎉',
+                style: GoogleFonts.roboto().copyWith(
+                  fontSize: 20,
+                ),
+              ),
             ),
           ],
         ));
