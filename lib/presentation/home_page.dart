@@ -3,7 +3,7 @@ import 'package:flutter_sp_social/data/social_qr_code.dart';
 import 'package:flutter_sp_social/presentation/event_store.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
-const _defaultQrIcon = AssetImage('assets/images/dash.png');
+const _defaultQrIcon = AssetImage('images/dash.png');
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

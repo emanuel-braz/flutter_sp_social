@@ -1,0 +1,32 @@
+{
+    "eventName": "Flutter SP",
+    "eventDate": "2019-01-01",
+    "social_qr_codes": [
+        {
+            "title": "Se inscreva no meetup",
+            "qr_code": "https://www.meetup.com/pt-BR/fluttersp/",
+            "icon": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png"
+        },
+        {
+            "title": "Entre no telegram",
+            "qr_code": "https://t.me/fluttersp",
+            "icon": "https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"
+        },
+        {
+            "title": "Siga no twitter - X",
+            "qr_code": "https://twitter.com/flutter_sp",
+            "icon": "https://about.twitter.com/content/dam/about-twitter/x/brand-toolkit/logo-black.png.twimg.1920.png"
+        },
+        {
+            "title": "Siga no Youtube",
+            "qr_code": "https://www.youtube.com/@flutter_sp",
+            "icon": "https://img.freepik.com/vetores-premium/circulo-do-logotipo-do-youtube-logotipo-de-midia-social-vermelho_197792-4982.jpg"
+        },
+        {
+            "title": "Mandem feedback anônimo, sugestões ou críticas sobre o evento",
+            "qr_code": "https://app.sli.do/event/6BJn1Es6BzhxoLwLetHoGm",
+            "icon": "https://www.slido.com/static/slido-logo.a3d453e1.svg"
+        }
+
+    ]
+}

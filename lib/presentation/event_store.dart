@@ -15,17 +15,16 @@ class EventStore extends ValueNotifier<EventModel?> {
   }
 
   String getEventId() {
-    final eventId =
-        Uri.base.pathSegments.isEmpty ? 'default' : Uri.base.pathSegments.first;
+    final eventId = Uri.base.queryParameters['id'] ?? 'default';
     return eventId;
   }
 
   Future<Map<String, dynamic>> loadJsonFromAssets(String file) async {
     String data;
     try {
-      data = await rootBundle.loadString('assets/data/$file.json');
+      data = await rootBundle.loadString('data/$file.json');
     } catch (_) {
-      data = await rootBundle.loadString('assets/data/default.json');
+      data = await rootBundle.loadString('data/default.json');
     }
 
     return jsonDecode(data);
