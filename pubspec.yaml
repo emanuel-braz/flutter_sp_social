@@ -12,6 +12,9 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.0
   pretty_qr_code: ^3.0.0
+  crypto: ^3.0.3
+  google_fonts: any
+  file_picker: ^6.1.1
 
 dev_dependencies:
   flutter_test:
