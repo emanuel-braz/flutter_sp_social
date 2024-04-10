@@ -7,6 +7,7 @@ import 'dart:math';
 import 'package:crypto/crypto.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SorteioPage extends StatefulWidget {
@@ -19,7 +20,7 @@ class SorteioPage extends StatefulWidget {
 class _SorteioPageState extends State<SorteioPage> {
   var users = <String>[];
 
-  _getUsers() async {
+  _getParticipantsFromFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.any,
     );
@@ -40,16 +41,52 @@ class _SorteioPageState extends State<SorteioPage> {
     }
   }
 
+  _getParticipantsFromClipboard() async {
+    await Clipboard.getData('text/plain').then((value) {
+      if (value == null || value.text == null) {
+        return;
+      }
+
+      late final List<String> lines;
+      final text = value.text!;
+
+      if (text.contains(',')) {
+        lines = text.split(',').map((e) => e.trim().toUpperCase()).toList();
+      } else {
+        lines = const LineSplitter().convert(value.text!).map((e) => e.trim().toUpperCase()).toList();
+      }
+
+      setState(() {
+        users = lines;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: Text(
-            "Sorteio Meetup Flutter SP",
+            "Sorteio Meetup",
             style: GoogleFonts.pacifico().copyWith(
               color: Colors.red,
             ),
           ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.paste),
+              onPressed: () async {
+                _getParticipantsFromClipboard();
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.upload_file),
+              onPressed: () async {
+                _getParticipantsFromFile();
+              },
+            ),
+          ],
         ),
         body: ListView.builder(
           padding: const EdgeInsets.all(16),
@@ -72,77 +109,60 @@ class _SorteioPageState extends State<SorteioPage> {
             );
           },
         ),
-        floatingActionButton: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            FloatingActionButton(
-                tooltip: 'Carregar lista de participantes',
-                heroTag: 'carregar',
-                onPressed: _getUsers,
-                child: Text(
-                  '⬆️',
-                  style: GoogleFonts.roboto().copyWith(
-                    fontSize: 20,
-                  ),
-                )),
-            const SizedBox(height: 20),
-            FloatingActionButton(
-              tooltip: 'Sortear',
-              heroTag: 'sortear',
-              onPressed: () {
-                if (users.isEmpty) {
-                  return;
-                }
+        floatingActionButton: FloatingActionButton(
+          tooltip: 'Sortear',
+          onPressed: () {
+            if (users.isEmpty) {
+              return;
+            }
 
-                final random = Random();
-                final index = random.nextInt(users.length);
-                showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (context) => AlertDialog(
-                          title: const Text("🎉 O ganhador é ..."),
-                          content: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              _getAvatarImage(users[index]),
-                              Text(
-                                users[index],
-                                style: GoogleFonts.roboto().copyWith(
-                                  fontSize: 20,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
+            final random = Random();
+            final index = random.nextInt(users.length);
+            showDialog(
+                context: context,
+                barrierDismissible: false,
+                builder: (context) => AlertDialog(
+                      title: const Text("🎉 O ganhador é ..."),
+                      content: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          _getAvatarImage(users[index]),
+                          Text(
+                            users[index],
+                            style: GoogleFonts.roboto().copyWith(
+                              fontSize: 20,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Text("Fechar"),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                                setState(() {
-                                  users.removeAt(index);
-                                });
-                              },
-                              child: const Text("Remover da lista"),
-                            ),
-                          ],
-                        ));
-              },
-              child: Text(
-                '🎉',
-                style: GoogleFonts.roboto().copyWith(
-                  fontSize: 20,
-                ),
-              ),
+                        ],
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text("Fechar"),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            setState(() {
+                              users.removeAt(index);
+                            });
+                          },
+                          child: const Text("Remover da lista"),
+                        ),
+                      ],
+                    ));
+          },
+          child: Text(
+            '🎉',
+            style: GoogleFonts.roboto().copyWith(
+              fontSize: 24,
             ),
-          ],
+          ),
         ));
   }
 

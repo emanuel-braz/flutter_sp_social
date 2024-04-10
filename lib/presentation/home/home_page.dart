@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.pushNamed(context, 'sorteio');
                     },
                     child: const Text(
-                      'Sorteio Meetup Flutter SP',
+                      'Sorteio',
                     ),
                   ),
                 ),
@@ -77,8 +77,7 @@ class _HomePageState extends State<HomePage> {
                     spacing: 16,
                     runSpacing: 16,
                     children: _store.value!.socialQrCodes
-                        .map((e) =>
-                            _QRCode(socialQrCode: e, width: _cardMaxWidth))
+                        .map((e) => _QRCode(socialQrCode: e, width: _cardMaxWidth))
                         .toList()),
               ),
             ),
