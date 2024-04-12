@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../data/social_qr_code.dart';
 import '../event_store.dart';
@@ -36,7 +36,7 @@ class ListTileWidget extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: () => launchUrlString(socialQrCode.qrCode),
+        onTap: () => launch(socialQrCode.qrCode),
         child: Container(
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
@@ -60,6 +60,13 @@ class ListTileWidget extends StatelessWidget {
               ],
             )),
       ),
+    );
+  }
+
+  Future<void> launch(String url, {bool isNewTab = true}) async {
+    await launchUrl(
+      Uri.parse(url),
+      webOnlyWindowName: isNewTab ? '_blank' : '_self',
     );
   }
 }
