@@ -1,0 +1,25 @@
+{
+    "eventName": "16º Flutter SP - Nubank",
+    "eventDate": "2024-04-17",
+    "color": "FF8A05BE",
+    "social_qr_codes": [
+        {
+            "title": "Siga o Erick Zanardo no X",
+            "qr_code": "https://twitter.com/CptPixel",
+            "icon": "https://about.twitter.com/content/dam/about-twitter/x/brand-toolkit/logo-black.png.twimg.1920.png",
+            "color": "FF8A05BE"
+        },
+        {
+            "title": "Siga o José Mário no GitHub",
+            "qr_code": "https://github.com/joseroot6",
+            "icon": "https://cdn-icons-png.flaticon.com/512/25/25231.png",
+            "color": "FF8A05BE"
+        },
+        {
+            "title": "Siga o Pedro Zaroni no LinkedIn",
+            "qr_code": "https://www.linkedin.com/in/pedrozaroni/",
+            "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png?20140125013055",
+            "color": "FF8A05BE"
+        }
+    ]
+}
