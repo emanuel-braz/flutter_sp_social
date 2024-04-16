@@ -46,17 +46,30 @@ class _HomePageState extends State<HomePage> {
                 ),
                 actions: [
                   if (!LayoutUtil.isMobileLayout(context))
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, 'sorteio');
-                        },
-                        child: const Text(
-                          'Sorteio',
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, 'sorteio');
+                            },
+                            child: const Text(
+                              'Sorteio',
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              _store.toggleView();
+                            },
+                            child: Icon(_store.value!.isCarouselView ? Icons.grid_view_rounded : Icons.view_carousel),
+                          ),
+                        ),
+                      ],
+                    )
                 ],
                 centerTitle: true,
                 backgroundColor: _store.value!.color != null

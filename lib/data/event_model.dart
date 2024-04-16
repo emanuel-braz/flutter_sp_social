@@ -10,12 +10,15 @@ class EventModel {
   final String eventDate;
   final String? color;
   final List<SocialQrCode> socialQrCodes;
+  final bool isCarouselView;
 
-  const EventModel(
-      {required this.eventName,
-      required this.eventDate,
-      this.color,
-      this.socialQrCodes = const []});
+  const EventModel({
+    required this.eventName,
+    required this.eventDate,
+    this.color,
+    this.socialQrCodes = const [],
+    this.isCarouselView = false,
+  });
 
   factory EventModel.fromMap(Map<String, dynamic> data) => EventModel(
         eventName: data['eventName'] as String,
@@ -45,4 +48,20 @@ class EventModel {
   ///
   /// Converts [EventModel] to a JSON string.
   String toJson() => json.encode(toMap());
+
+  EventModel copyWith({
+    String? eventName,
+    String? eventDate,
+    String? color,
+    List<SocialQrCode>? socialQrCodes,
+    bool? isCarouselView,
+  }) {
+    return EventModel(
+      eventName: eventName ?? this.eventName,
+      eventDate: eventDate ?? this.eventDate,
+      color: color ?? this.color,
+      socialQrCodes: socialQrCodes ?? this.socialQrCodes,
+      isCarouselView: isCarouselView ?? this.isCarouselView,
+    );
+  }
 }

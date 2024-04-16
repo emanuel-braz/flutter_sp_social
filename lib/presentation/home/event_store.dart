@@ -29,4 +29,8 @@ class EventStore extends ValueNotifier<EventModel?> {
 
     return jsonDecode(data);
   }
+
+  void toggleView() {
+    value = value!.copyWith(isCarouselView: !value!.isCarouselView);
+  }
 }

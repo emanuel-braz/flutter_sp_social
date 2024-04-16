@@ -33,17 +33,17 @@ class _DesktopViewState extends State<DesktopView> {
             spacing: 16,
             runSpacing: 16,
             children:
-                widget.store.value!.socialQrCodes.map((e) => _QRCode(socialQrCode: e, width: _cardMaxWidth)).toList()),
+                widget.store.value!.socialQrCodes.map((e) => QRCode(socialQrCode: e, width: _cardMaxWidth)).toList()),
       ),
     );
   }
 }
 
-class _QRCode extends StatelessWidget {
+class QRCode extends StatelessWidget {
   final SocialQrCode socialQrCode;
   final double width;
 
-  const _QRCode({required this.socialQrCode, required this.width});
+  const QRCode({super.key, required this.socialQrCode, required this.width});
 
   @override
   Widget build(BuildContext context) {
@@ -104,9 +104,8 @@ class _QRCode extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   socialQrCode.title,
-                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                        color: Theme.of(context).colorScheme.background,
-                      ),
+                  style:
+                      Theme.of(context).textTheme.headlineSmall!.copyWith(color: Theme.of(context).colorScheme.surface),
                   textAlign: TextAlign.center,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
