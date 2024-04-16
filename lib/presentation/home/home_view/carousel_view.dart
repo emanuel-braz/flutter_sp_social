@@ -19,7 +19,15 @@ class CarouselView extends StatefulWidget {
 }
 
 class _CarouselViewState extends State<CarouselView> {
-  final carouselController = CarouselController();
+  final _carouselController = CarouselController();
+  late final int _speed;
+
+  @override
+  void initState() {
+    final params = Uri.base.queryParameters;
+    _speed = int.tryParse(params['speed'] ?? '') ?? 5;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +44,14 @@ class _CarouselViewState extends State<CarouselView> {
         height: maxHeight,
         child: CarouselSlider(
           items: items.map((e) => QRCode(socialQrCode: e, width: maxWidth)).toList(),
-          carouselController: carouselController,
+          carouselController: _carouselController,
           options: CarouselOptions(
             clipBehavior: Clip.none,
             autoPlay: true,
             viewportFraction: 1,
             aspectRatio: screenWidth / screenHeight,
             initialPage: 0,
+            autoPlayInterval: Duration(seconds: _speed),
           ),
         ),
       ),
