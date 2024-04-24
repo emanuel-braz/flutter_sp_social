@@ -16,6 +16,7 @@ dependencies:
   google_fonts: any
   file_picker: ^6.1.1
   carousel_slider: ^4.2.1
+  easy_web_view: ^1.6.0
 
 dev_dependencies:
   flutter_test:
@@ -27,3 +28,4 @@ flutter:
   assets:
     - images/
     - data/
+    - static/
