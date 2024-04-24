@@ -22,15 +22,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       onGenerateRoute: (settings) {
-        String route = settings.name ?? '/';
-        if (route == '/') {
-          if (Uri.base.pathSegments.length == 2) {
-            String? path = Uri.base.pathSegments[1];
-            route = path;
-          }
-        }
-
-        switch (route) {
+        switch (settings.name) {
           case 'sorteio':
             return MaterialPageRoute(
               builder: (context) => const SorteioPage(),

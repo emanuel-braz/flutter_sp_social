@@ -35,6 +35,15 @@ class _HomePageState extends State<HomePage> {
           return Scaffold(
               appBar: AppBar(
                 automaticallyImplyLeading: false,
+                leading: IconButton(
+                  onPressed: () {
+                    _store.toggleView();
+                  },
+                  icon: Icon(
+                    _store.value!.isCarouselView ? Icons.grid_view_rounded : Icons.view_carousel,
+                    color: Theme.of(context).colorScheme.background,
+                  ),
+                ),
                 title: Text(
                   _store.value!.eventName,
                   style: Theme.of(context).textTheme.headlineSmall!.copyWith(
@@ -64,9 +73,11 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.all(8.0),
                           child: ElevatedButton(
                             onPressed: () {
-                              _store.toggleView();
+                              Navigator.pushNamed(context, 'certificate');
                             },
-                            child: Icon(_store.value!.isCarouselView ? Icons.grid_view_rounded : Icons.view_carousel),
+                            child: const Text(
+                              'Certificado',
+                            ),
                           ),
                         ),
                       ],
