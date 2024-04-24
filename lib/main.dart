@@ -24,8 +24,10 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (settings) {
         String route = settings.name ?? '/';
         if (route == '/') {
-          String? path = Uri.base.pathSegments.firstOrNull;
-          route = path ?? route;
+          if (Uri.base.pathSegments.length == 2) {
+            String? path = Uri.base.pathSegments[1];
+            route = path;
+          }
         }
 
         switch (route) {
