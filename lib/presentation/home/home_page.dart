@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
 
           return Scaffold(
               appBar: AppBar(
+                automaticallyImplyLeading: false,
                 title: Text(
                   _store.value!.eventName,
                   style: Theme.of(context).textTheme.headlineSmall!.copyWith(
