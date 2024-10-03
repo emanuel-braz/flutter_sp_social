@@ -26,6 +26,10 @@
             "title": "Mandem feedback anônimo, sugestões ou críticas sobre o evento",
             "qr_code": "https://app.sli.do/event/6BJn1Es6BzhxoLwLetHoGm",
             "icon": "https://www.slido.com/static/slido-logo.a3d453e1.svg"
+        },
+        {
+            "title": "Para palestrar no Flutter São Paulo",
+            "qr_code": "https://forms.gle/oVatVPuQdALWoon68"
         }
 
     ]
