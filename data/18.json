@@ -1,0 +1,25 @@
+{
+    "eventName": "18º Flutter SP",
+    "eventDate": "2025-07-24",
+    "color": "FF7132c4",
+    "social_qr_codes": [
+        {
+            "title": "Se inscreva no meetup",
+            "qr_code": "https://www.meetup.com/pt-BR/fluttersp/",
+            "icon": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png"
+        },
+        {
+            "title": "Conecte-se com o Victor Padovan",
+            "qr_code": "https://www.linkedin.com/in/victor-padovam-b4b4b715b/",
+            "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png?20140125013055"
+        },
+        {
+            "title": "Apoie fazendo meetups na sua empresa",
+            "qr_code": "https://docs.google.com/forms/d/e/1FAIpQLSdYfAUOMvcCpNq7mT9MtS8bmDmG3K3p6YfVCyvhqT9RNdri1Q/viewform"
+        },
+        {
+            "title": "Se torne organizador de um dos nossos meetups",
+            "qr_code": "https://docs.google.com/forms/d/e/1FAIpQLSfBBNGkrMX7hgAir4VHlle5k-bak0o-3GOjeit_VHZWdJigzA/viewform"
+        }
+    ]
+}
